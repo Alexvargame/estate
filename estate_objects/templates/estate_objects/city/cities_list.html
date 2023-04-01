@@ -1,0 +1,55 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Flats
+{% endblock %}
+
+
+{% block content %}
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 100%;
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+
+	<table>
+  		<tr>
+		 
+   		 <th style="width:10%">Название</th>
+    		 <th style="width:10%">Регион</th>
+    		 <th style="width:10%">Страна</th>
+  		 </tr>
+	
+	
+		
+	{% for city in cities%}
+		<tr>
+		<td><a href="{{city.get_absolute_url}}">{{city.city}}</a></td>
+    		 <td>{{city.region}}</td>
+		 <td>{{city.country}}</td>
+		</tr>
+	{% endfor %}
+	
+		
+	</table>
+<a class="btn btn-primary" href="{% url 'city_create_url' %}" role="button">Добавить город</a>
+
+	
+{% endblock %} 
+
+<!--{flat.get_absolute_url}-->

@@ -1,0 +1,44 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Flats
+{% endblock %}
+
+
+{% block content %}
+	<div class="card" style="width: 50rem;">
+ 	 <div class="card-header">
+  	  ИНформация по населенному пункту
+ 	 </div>
+ 	 <ul class="list-group list-group-flush">
+ 	   <li class="list-group-item">Название-{{city.city}}</li>
+  	  <li class="list-group-item">Регион-{{city.region}}</li>
+  	  <li class="list-group-item">Страна-{{city.country}}</li>
+ 	 </ul>
+	</div>	
+	
+{% if request.user.is_authenticated %}
+
+
+
+<div class="obj-panel">
+	<p>Выбрать</p>
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{city.get_update_url}}">Edit</a>
+		<a class="btn btn-danger" href="{{city.get_delete_url}}">Del</a>
+		<a class="btn btn-light" href="{% url 'cities_list_url'%}">List</a>
+	 {%endblock%}
+	</div>
+{% endif%}
+{% endblock %} 
+
+<!--{% for fl in flat.items %}
+		
+		<h4>{{fl.label}}</h4>
+		<p>{{fl}}</p>
+	{% endfor %}
+-->
+

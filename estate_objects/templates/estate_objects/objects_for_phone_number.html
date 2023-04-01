@@ -1,0 +1,20 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Estate_objects
+
+{% endblock %}
+
+
+{% block content %}
+
+{% for obj in phone_number_list_object%}
+	<li>
+	{{obj}}
+	</li>
+{%endfor%}
+{% endblock %} 
+

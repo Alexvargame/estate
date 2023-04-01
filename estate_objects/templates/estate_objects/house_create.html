@@ -1,0 +1,64 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+
+ 
+{% block title %}
+		
+	Create House
+{% endblock %}
+
+
+{% block content %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+</style>
+	
+
+
+	<form action="{% url 'house_create_url' %}" method='post'>
+		{% csrf_token %}
+	<div class="form-group">
+		<table style="width:100%">
+  
+	<tr>
+   		 <td>Тип объекта{{form.types}}</td>
+    		 <td></td>
+		 <td></td>
+		
+ 	 </tr>
+
+	 <tr>
+   		 <td>Город{{form.city}}</td>
+		 <td>Район{{form.district}}</td>
+    		 <td>Улица/проспект и т.д.{{form.street}}</td>
+		
+ 	 </tr>
+	<tr>
+   		 <td>Этаж{{form.floor}}Кол-во комнат{{form.rooms}}</td>
+		 <td>Площаль участка{{form.land_square}}Часть участка{{form.land_part}}</td>
+    		 <td>Площадь{{form.square}}Цена{{form.price}}</td>
+ 	 </tr>
+	</table>
+	<table style="width:100%">
+	
+	<tr>
+   		 <td style="width:100%">Информация{{form.text_info}}</td>
+		 
+ 	 </tr>
+	 <tr>
+   		 <td>Автор{{form.author_object}}</td>
+		 
+ 	 </tr>
+		
+
+		</table>
+	</div>
+	<button type="submit" class="btn btn-primary">Сохранить</button>
+	</form>
+	
+
+{% endblock %} 
+

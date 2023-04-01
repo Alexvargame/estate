@@ -1,0 +1,46 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Flats
+{% endblock %}
+
+
+{% block content %}
+
+
+	
+{% if request.user.is_authenticated %}
+
+
+
+<div class="obj-panel">
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{flat.get_absolute_url}}">Назад</a>
+	 {%endblock%}
+	</div>
+{% endif%}
+
+
+{%for im in images%}
+<a href=""><img class="rounded-circle account-img" src="{{im}}""></a>
+{%endfor%}
+
+
+<br>
+
+<br>
+
+
+
+{% endblock %} 
+
+<!--{% for fl in flat.items %}
+		
+		<h4>{{fl.label}}</h4>
+		<p>{{fl}}</p>
+	{% endfor %}
+-->
+

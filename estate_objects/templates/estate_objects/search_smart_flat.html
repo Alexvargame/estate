@@ -1,0 +1,67 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+
+ 
+{% block title %}
+		
+	Search object
+{% endblock %}
+
+
+{% block content %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+</style>
+	
+       
+
+	<form action="{% url 'search_smart_flat_url' %}" method='get'>
+		{% csrf_token %}
+	<div class="form-group">
+		<table style="width:100%">
+	<tr>
+   		 <td>От {{form.date_begin}}</td>
+    		 <td>До {{form.date_end}}</td>
+		 <td></td>
+		
+ 	 </tr>
+  
+	<tr>
+   		 <td>Тип объекта{{form.types}}</td>
+    		 <td></td>
+		 <td></td>
+		
+ 	 </tr>
+
+	 <tr>
+   		 <td>Город{{form.city}}</td>
+		 <td>Район{{form.district}}</td>
+    		 <td>Улица/проспект и т.д.{{form.street}}</td>
+	</tr>
+	</table>
+	<table style="width:100%">
+		
+ 	
+	<tr>
+   		 
+		<td>Этаж{{form.floor_min}}-{{form.floor_max}}</td>
+		<td>Этажность{{form.floors_min}}-{{form.floors_max}}</td>
+		 
+		 <td>Кол-во комнат{{form.rooms_min}}-{{form.rooms_max}}</td>
+		 
+    		 <td>Площадь{{form.square_min}}-{{form.square_max}}
+		 <td>Цена{{form.price_min}}-{{form.price_max}}</td>
+		 
+ 	 </tr>
+	</table>
+	
+	</div>
+	<button type="submit" class="btn btn-primary">Найти</button>
+	</form>
+	
+
+{% endblock %} 
+

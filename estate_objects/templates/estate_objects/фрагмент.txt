@@ -1,0 +1,39 @@
+{{form.types}}
+		{{form.city}}
+		{{form.street}}
+		{{form.num_house}}
+		{{form.num_kor}}
+		{{form.district}}
+		{{form.price}}
+		{{form.text_info}}
+		{{form.author_object}}
+		{{form.rooms}}
+		{{form.floor}}
+		{{form.floors}}
+		{{form.square}}
+		{{form.plan}}
+
+
+
+<!--{% if request.user.is_authenticated %}
+	<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Админ</a>
+	   <ul class="dropdown-menu dropend">
+		<div class="btn-group dropdown">
+		<button class="btn btn-seconary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Города</button>		
+   			<div class="dropdown-menu"> 
+					<a class="dropdown-item" href="{% url 'smart_flats_list_url' %}">Просмотр</a>
+					<!--<li><a class="dropdown-item dropdown-item" href="">Добавить</a></li>
+					<li><a class="dropdown-item dropdown-item" href="">Редактировать</a></li>
+					<li><a class="dropdown-item dropdown-item" href="">Удалить</a></li>-->
+			</div>
+		</div>
+		<li><a class="dropdown-item" href="">Улицы</a></li>
+    		<li><a class="dropdown-item" href="">Районы</a></li>	
+  	  </ul>
+        </li>
+       {%endif%}
+	<form class="form-inline my-2 my-lg-0" action="">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search"  aria-label="Search" name="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>-->

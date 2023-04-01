@@ -1,0 +1,42 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Таблицы с данными
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+  <div class="btn-group-verctical dropend" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Адрес
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'cities_list_url' %}">Города</a></li>
+      <li><a class="dropdown-item" href="{% url 'streets_list_url' %}">Улицы/проспекты</a></li>
+      <li><a class="dropdown-item" href="{% url 'districts_list_url' %}">Районы</a></li>
+    </ul>
+  </div>
+  <div class="btn-group-verctical dropend" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Пользователи
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'users_list_url' %}">Список</a></li>
+    </ul>
+  </div>
+  <button type="button" class="btn btn-info">Button</button>
+  <button type="button" class="btn btn-info">Button</button>
+  <button type="button" class="btn btn-info">Button</button>
+  <button type="button" class="btn btn-info">Button</button>
+</div>	
+
+{{num_visits}}
+
+{% endblock %} 
+

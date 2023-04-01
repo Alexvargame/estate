@@ -1,0 +1,23 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+
+ 
+{% block title %}
+		
+	Delete district
+{% endblock %}
+
+
+{% block content %}
+
+	
+
+	<form action="{{district.get_delete_url}}" method='post'>
+		{% csrf_token %}
+	<h3>Вы уверены, что хотите удалить объект?<b>"{{district.id}}"</b></h3>
+	<a href="{{district.get_absolute_url}}">Отменить</a>
+	<button type="submit" class="btn btn-danger">Удалить</button>
+	</form>
+	
+
+{% endblock %} 
+

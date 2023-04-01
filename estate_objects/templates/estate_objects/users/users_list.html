@@ -1,0 +1,72 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Flats
+{% endblock %}
+
+
+{% block content %}
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 100%;
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+
+	<table>
+  		<tr>
+		 
+   		 <th style="width:5%">Никнейм</th>
+		 <th style="width:10%">Имя</th>
+		 <th style="width:10%">фамилия</th>
+		 <th style="width:10%">Телефонные номера</th>
+		 <th style="width:7%">ДР</th>
+		 <th style="width:30%">Инфо</th>
+		 <th style="width:3%">Объекты</th>
+		 <th style="width:20%">Фото</th>
+    		 
+  		 </tr>
+	
+	
+		
+	{% for us in users%}
+	
+		<tr>
+		<td>{{us}}</td>
+		<td>{{us.profile.name}}</td>
+		<td>{{us.profile.sirname}}</td>
+		<td>{%for c,num in phone_numbers.items%}
+			{%if c == us.username %}
+			{%for n in num %}<a href="{% url 'objects_for_phone_number_url' author_object=us.username %}">{{n}}</a><br>{%endfor%}
+			{%endif%}
+			
+		{%endfor%}
+		</td>
+		<td>{{us.profile.birth_date}}</td>
+		<td>{{us.profile.about_user}}</td>
+		<td>{%for c,v in count_obj.items%}{%if c == us.username %}{{v}}{%endif%}{%endfor%}</td>	
+    		
+		</tr>
+
+	   
+
+	{% endfor %}
+	
+		
+	</table>
+{% endblock %} 
+

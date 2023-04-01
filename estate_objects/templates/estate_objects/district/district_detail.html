@@ -1,0 +1,46 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	districts
+{% endblock %}
+
+
+{% block content %}
+	
+	<div class="card" style="width: 50rem;">
+ 	 <div class="card-header">
+  	  ИНформация
+ 	 </div>
+ 	 <ul class="list-group list-group-flush">
+ 	   <li class="list-group-item">Название-{{district.name}}</li>
+  	  
+ 	 </ul>
+	</div>	
+	
+	
+	
+{% if request.user.is_authenticated %}
+
+
+
+<div class="obj-panel">
+	<p>Выбрать</p>
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{district.get_update_url}}">Edit</a>
+		<a class="btn btn-danger" href="{{district.get_delete_url}}">Del</a>
+		<a class="btn btn-light" href="{% url 'districts_list_url'%}">List</a>
+	 {%endblock%}
+	</div>
+{% endif%}
+{% endblock %} 
+
+<!--{% for fl in flat.items %}
+		
+		<h4>{{fl.label}}</h4>
+		<p>{{fl}}</p>
+	{% endfor %}
+-->
+

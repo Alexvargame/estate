@@ -1,0 +1,104 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Smart Flats
+{% endblock %}
+
+
+{% block content %}
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 100%;
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+
+	<table>
+  		<tr>
+		 <th style="width:5%">I</th>
+		 <th style="width:4%">Тип</th>
+   		 <th style="width:10%">Город</th>
+    		 <th style="width:10%">Район</th>
+    		 <th style="width:10%">Улица</th>
+		 <th style="width:4%">Этаж/этажн</th>
+		 <th style="width:4%">Ком-т</th>
+		 <th style="width:4%">Площадь</th>
+		 <th style="width:4%">Часть</th>
+		 <th style="width:5%">Цена</th>
+		 <th style="width:30%">Инфо</th>
+		 <th style="width:10%">Автор</th>
+  		 </tr>
+	
+	
+		
+	{% for smartflat in smartflats.object_list %}
+		<tr>
+		<td><a href="{{smartflat.get_absolute_url}}">I</a></td>
+		 <td>{{smartflat.types}}</td>
+		 <td>{{smartflat.city}}</td>
+    		 <td>{{smartflat.district}}</td>
+		 <td>{{smartflat.street}}</td>
+		 <td>{{smartflat.floor}}/{{flat.floors}}</td>
+		 <td>{{smartflat.rooms}}</td>
+		 <td>{{smartflat.square}}</td>
+		 <td>{{smartflat.part}}</td>
+		 <td>{{smartflat.price}}</td>
+		 <td>{{smartflat.text_info}}</td>
+		 <td>{%for u,num in phone_numbers.items%} 
+			{% if smartflat.author_object == u%}
+			{%for n in num %}<a href="{% url 'objects_for_phone_number_url' author_object=smartflat.author_object %}">{{n}}</a><br>{%endfor%}
+			{%endif%}
+			{%endfor%}
+		 </td>
+		</tr>
+	{% endfor %}
+	
+		
+	</table>
+
+  {% if is_paginated %}
+
+
+ <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item {%if not prev_url%}disabled{%endif%}">
+      <a class="page-link" href="{{prev_url}}">Previous</a>
+    </li>
+    
+    
+
+
+    {% for n in smartflats.paginator.page_range %}
+	{% if flats.number == n %}
+		<li class="page-item active" aria-current="page">
+      			<a class="page-link" href="?page={{n}}">{{n}}</a>
+    		</li>
+	{%elif n > smartflats.number|add:-3  and n < smartflats.number|add:3%}
+	<li class="page-item"><a class="page-link" href="?page={{n}}">{{n}}</a></li>
+	{%endif%}
+    {%endfor%}
+
+    <li class="page-item {%if not next_url%}disabled{%endif%}">
+      <a class="page-link" href="{{next_url}}">Next</a>
+    </li>
+  </ul>
+</nav>
+{%endif%}
+	
+{% endblock %} 
+
+<!--{flat.get_absolute_url}-->

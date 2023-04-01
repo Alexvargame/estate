@@ -1,0 +1,30 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+
+ 
+{% block title %}
+		
+	Delete flat
+{% endblock %}
+
+
+{% block content %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+</style>
+	
+	
+
+	<form action="{{smartflat.get_delete_url}}" method='post'>
+		{% csrf_token %}
+	<h3>Вы уверены, что хотите удалить объект?<b>"{{smartflat.id}}"</b></h3>
+	<a href="{{smartflat.get_absolute_url}}">Отменить</a>
+	<button type="submit" class="btn btn-danger">Удалить</button>
+	</form>
+	
+
+{% endblock %} 
+

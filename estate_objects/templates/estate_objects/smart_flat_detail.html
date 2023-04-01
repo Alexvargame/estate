@@ -1,0 +1,62 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Smart Flats
+{% endblock %}
+
+
+{% block content %}
+
+  
+	
+	<div class="card" style="width: 50rem;">
+ 	 <div class="card-header">
+  	  ИНформация по объекту
+ 	 </div>
+	 Общая
+ 	 <ul class="list-group list-group-flush">
+ 	    <li class="list-group-item">Автор {{smartflat.author_object}}</li>
+ 	   <li class="list-group-item"> {% if smartflat.author_object %}<a href="{% url 'objects_for_author_url' author_object=smartflat.author_object %}">Объекты</a> {% endif %}</li>
+	 <li class="list-group-item"> {% if smartflat.author_object %}<a href="{% url 'user_profile_url' author_object=smartflat.author_object %}">Профиль</a> {% endif %}</li>
+  	Телефоны 
+	 
+	<li class="list-group-item"> <a href="{% url 'objects_for_phone_number_url' author_object=smartflat.author_object %}">{%for ph in phone_number%}{{ph.phone_number}}</br>{%endfor%}</a></li> 
+  	  <li class="list-group-item">Дата посл.изменения-{{smartflat.add_date}}</li>
+  	  <li class="list-group-item">Адрес-{{smartflat.city}},{{smartflat.district}},{{smartflat.street}}</li>
+ 	 </ul>
+	Характеристики
+ 	 <ul class="list-group list-group-flush">
+ 	  <li class="list-group-item">Кол-во комнат-{{smartflat.rooms}}</a></li>
+  	  <li class="list-group-item">Этаж/Этажность-{{smartflat.floor}}/{{smartflat.floors}}</li>
+  	  <li class="list-group-item">Часть-{{smartflat.part}}</li>
+	  <li class="list-group-item">Площадь-{{smartflat.square}}</a></li>
+  	  <li class="list-group-item">Цена-{{smartflat.price}}</li>
+	  <p>Дополнительная ифнормация</p>
+  	  <li class="list-group-item">{{smartflat.text_info}}</li>
+ 	 </ul>
+	</div>
+{% if request.user.is_authenticated %}
+
+
+<div class="obj-panel">
+	<p>Выбрать</p>
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{smartflat.get_update_url}}">Edit</a>
+		<a class="btn btn-danger" href="{{smartflat.get_delete_url}}">Del</a>
+		<a class="btn btn-light" href="{% url 'smart_flats_list_url'%}">List</a>
+	 {%endblock%}
+	</div>
+{% endif%}
+
+{% endblock %} 
+
+<!--{% for fl in flat.items %}
+		
+		<h4>{{fl.label}}</h4>
+		<p>{{fl}}</p>
+	{% endfor %}
+-->
+

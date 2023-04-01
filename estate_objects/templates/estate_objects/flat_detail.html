@@ -1,0 +1,73 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Flats
+{% endblock %}
+
+
+{% block content %}
+	<div class="card" style="width: 50rem;">
+ 	 <div class="card-header">
+  	  ИНформация по объекту
+ 	 </div>
+	 Общая
+ 	 <ul class="list-group list-group-flush">
+	   <li class="list-group-item">Автор {{flat.author_object}}</li>
+ 	   <li class="list-group-item"> {% if flat.author_object %}<a href="{% url 'objects_for_author_url' author_object=flat.author_object %}">Объекты</a> {% endif %}</li>
+	 <li class="list-group-item"> {% if flat.author_object %}<a href="{% url 'user_profile_url' author_object=flat.author_object %}">Профиль</a> {% endif %}</li>
+  	Телефоны 
+	<li class="list-group-item"> <a href="{% url 'objects_for_phone_number_url' author_object=flat.author_object %}">{%for ph in phone_number%}{{ph.phone_number}}</br>{%endfor%}</a></li>  
+	<li class="list-group-item">Дата посл.изменения-{{flat.add_date}}</li>
+  	  <li class="list-group-item">Адрес-{{flat.city}},{{flat.district}},{{flat.street}}</li>
+ 	 </ul>
+	Характеристики
+ 	 <ul class="list-group list-group-flush">
+ 	  <li class="list-group-item">Кол-во комнат-{{flat.rooms}}</a></li>
+  	  <li class="list-group-item">Этаж/Этажность-{{flat.floor}}/{{flat.floors}}</li>
+  	  <li class="list-group-item">Планировка-{{flat.plan}}</li>
+	  <li class="list-group-item">Площадь-{{flat.square}}</a></li>
+  	  <li class="list-group-item">Цена-{{flat.price}}</li>
+	  <p>Дополнительная ифнормация</p>
+  	  <li class="list-group-item">{{flat.text_info}}</li>
+ 	 </ul>
+	</div>
+
+	
+{% if request.user.is_authenticated %}
+
+
+
+<div class="obj-panel">
+	<p>Выбрать</p>
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{flat.get_update_url}}">Edit</a>
+		<a class="btn btn-danger" href="{{flat.get_delete_url}}">Del</a>
+		<a class="btn btn-light" href="{% url 'flats_list_url'%}">List</a>
+	 {%endblock%}
+	</div>
+{% endif%}
+
+
+{%for im in images%}
+<a href="{%url 'flat_big_image_url' flat_id=flat.id%}"><img class="rounded-circle account-img" src="{{im}}" style="width: 100px; height: auto;"></a>
+{%endfor%}
+
+
+<br>
+{{s1}}
+<br>
+
+
+
+{% endblock %} 
+
+<!--{% for fl in flat.items %}
+		
+		<h4>{{fl.label}}</h4>
+		<p>{{fl}}</p>
+	{% endfor %}
+-->
+

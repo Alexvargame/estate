@@ -1,0 +1,81 @@
+﻿{% extends 'estate_objects/base_ob.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Flats
+{% endblock %}
+
+
+{% block content %}
+{%if lenobj < 1 %}
+
+По этому номеру нет объявлений
+{%else%}
+<style>
+aside {
+  width: 20%;
+  heigth:100%
+  padding-right: 15px;
+  margin-right: 15px;
+  float: left;
+  font-style: italic;
+  
+}
+</style>
+<aside>
+	<h3>Другие телефоны</h3>
+	<ul>
+	    {% if len < 1%}
+		Других номеров нет
+	    {%else%}		
+		{%for num in numbers%}
+		 {{num}}
+		{%endfor%}	
+	     {%endif%}
+	</ul>
+</aside>
+	{% for obj in phone_number_object%}
+	<li>
+	{{obj}}
+	</li>
+{%endfor%}
+
+  {% if is_paginated %}
+
+
+ <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item {%if not prev_url%}disabled{%endif%}">
+      <a class="page-link" href="{{prev_url}}">Previous</a>
+    </li>
+    
+    
+
+
+    {% for n in phone_number_object.paginator.page_range %}
+	{% if phone_number_object.number == n %}
+		<li class="page-item active" aria-current="page">
+      			<a class="page-link" href="?search={{sq}}&page={{n}}">{{n}}</a>
+    		</li>
+	{%elif n > phone_number_object.number|add:-3  and n < phone_number_object.number|add:3%}
+	<li class="page-item"><a class="page-link" href="?search={{sq}}&page={{n}}">{{n}}</a></li>
+	{%endif%}
+    {%endfor%}
+
+    <li class="page-item {%if not next_url%}disabled{%endif%}">
+      <a class="page-link" href="{{next_url}}">Next</a>
+    </li>
+  </ul>
+</nav>
+{%endif%}
+{%endif%}
+
+
+
+
+{% endblock %} 
+
+	        
+<!--{flat.get_absolute_url}-->
